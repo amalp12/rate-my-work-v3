@@ -25,7 +25,7 @@ export default function DashboardLayout(props: AuthProps) {
       </div>
       <main className="flex-1">
         <Separator />
-        <Applicant props={...props}/>
+        <Applicant {...props}/>
       </main>
     </div>
   )

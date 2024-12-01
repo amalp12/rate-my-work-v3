@@ -5,15 +5,14 @@ import SignPage from './pages/SignIn';
 import RecruiterLayout from './pages/RecruiterLayout';
 import ApplicantLayout from './pages/ApplicantLayout';
 import ProfileComplete from './components/Profile';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AuthProps } from './types.d';
 
 const OKTO_CLIENT_API_KEY = import.meta.env.VITE_APP_OKTO_CLIENT_API_KEY || '';
 function App() {
  console.log('App component rendered');
  const [authToken, setAuthToken] = useState('');
- const [isProfileComplete, setIsProfileComplete] = useState(false);
-  const [isRecruiter, setIsRecruiter] = useState(false);
+ const [isProfileComplete, setIsProfileComplete] = useState(true);
+  const [isRecruiter, setIsRecruiter] = useState(true);
  const handleLogout = () => {
     console.log("setting auth token to null")
     setAuthToken(''); // Clear the authToken
