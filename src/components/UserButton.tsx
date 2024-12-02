@@ -1,15 +1,13 @@
 'use client';
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
-import { Loader, LogOut } from 'lucide-react';
+import { LogOut } from 'lucide-react';
 
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    //DropdownMenuLabel,
-    //DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import {

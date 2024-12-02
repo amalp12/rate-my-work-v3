@@ -29,7 +29,7 @@ function App() {
   };
  return (
    <Router>
- 8     <OktoProvider apiKey={OKTO_CLIENT_API_KEY} buildType={BuildType.SANDBOX}>
+      <OktoProvider apiKey={OKTO_CLIENT_API_KEY} buildType={BuildType.SANDBOX}>
        <Routes>
          <Route path="/" element={<SignPage {...authProps} />} />
          <Route path="/profile-complete" element={authToken && isProfileComplete && isRecruiter? <RecruiterLayout {...authProps}/> : <Navigate to="/" />} />
