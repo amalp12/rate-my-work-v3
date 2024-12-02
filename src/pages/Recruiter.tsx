@@ -19,13 +19,23 @@ import {
 import { Button } from "@/components/ui/button"
 import { CheckCircle } from "lucide-react"
 import { AuthProps, ProjectDetails } from "@/types.d"
+import { useOkto } from "okto-sdk-react"
 
 export default function RecruiterPage(props: AuthProps) {
+  // initialize okto 
+  const oktoContext = useOkto();
+
   const { authToken, setAuthToken, handleLogout } = props
   const [selectedApplicant, setSelectedApplicant] = useState(applicants[0])
   const [verifiedProjects, setVerifiedProjects] = useState<Record<string, boolean>>({})
 
   console.log("authToken", authToken, "setAuthToken", setAuthToken, "handleLogout", handleLogout)
+
+  const verfyProjectOkto = async (projectDetails: ProjectDetails) => {
+    // const response = await oktoContext?.verifyProject(projectDetails)
+    // console.log("response", response)
+  } 
+
   const handleVerifyProject = (projecDetails: ProjectDetails) => {
 
     // setVerifiedProjects(prev => ({
