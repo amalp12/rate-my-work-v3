@@ -767,17 +767,18 @@ export default function RecruiterPage(props: AuthProps) {
 
       const iface = new ethers.Interface(contractABI);
       
-      const args = [
-        projectDetails.projectName,
-        projectDetails.description,
-      ];
+      // const args = [
+      //   projectDetails.projectId,
+      //   projectDetails.isVerified,
+      // ];
       
-      const data = iface.encodeFunctionData('verifyProject', args);
+      
+      const data = iface.encodeFunctionData('verifyProject',  [12, true]);  
       
       const transactionData = {
-        network_name: "amoy",
+        network_name: "POLYGON_TESNET_AMOY",
         transaction: {
-          from: oktoContext?.account.address,
+          from: "0x096F30Fba4De8A6ccdE763b9F3934B9E875A8b8B",
           to: contractAddress,
           data: data,
           value: "0x"
@@ -802,7 +803,7 @@ export default function RecruiterPage(props: AuthProps) {
       // Update the UI based on the transaction result
       setVerifiedProjects(prev => ({
         ...prev,
-        [projectDetails.projectName]: !prev[projectDetails.projectName]
+        [projectDetails.projectName]: projectDetails.isVerified
       }));
     } catch (error) {
       console.error('Error executing transaction:', error);
@@ -897,11 +898,11 @@ export default function RecruiterPage(props: AuthProps) {
                                 onClick={() =>{
                                    // create projectDetails object
                                     const projectDetails = {
-                                      projectName: project.name,
-                                      description: project.description,
-                                      user: selectedApplicant.name,
-                                      sendersAddress: selectedApplicant.email,
-                                      isVerified: verifiedProjects[project.name]
+                                      projectName: "Test Name" || project.name,
+                                      description: "Test Desc" || project.description,
+                                      user: "Test user" || selectedApplicant.name,
+                                      sendersAddress:"0x096F30Fba4De8A6ccdE763b9F3934B9E875A8b8B" ||selectedApplicant.email,
+                                      isVerified: true || verifiedProjects[project.name]
 
                                     }
 
