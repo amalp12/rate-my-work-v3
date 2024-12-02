@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { CheckCircle } from "lucide-react"
-import { AuthProps } from "@/types.d"
+import { AuthProps, ProjectDetails } from "@/types.d"
 
 export default function RecruiterPage(props: AuthProps) {
   const { authToken, setAuthToken, handleLogout } = props
@@ -26,11 +26,12 @@ export default function RecruiterPage(props: AuthProps) {
   const [verifiedProjects, setVerifiedProjects] = useState<Record<string, boolean>>({})
 
   console.log("authToken", authToken, "setAuthToken", setAuthToken, "handleLogout", handleLogout)
-  const handleVerifyProject = (projectName: string) => {
-    setVerifiedProjects(prev => ({
-      ...prev,
-      [projectName]: !prev[projectName]
-    }))
+  const handleVerifyProject = (projecDetails: ProjectDetails) => {
+
+    // setVerifiedProjects(prev => ({
+    //   ...prev,
+    //   [projectName]: !prev[projectName]
+    // }))
   }
 
   return (
@@ -117,7 +118,20 @@ export default function RecruiterPage(props: AuthProps) {
                               <Button
                                 variant={verifiedProjects[project.name] ? "outline" : "default"}
                                 size="sm"
-                                onClick={() => handleVerifyProject(project.name)}
+                                onClick={() =>{
+                                   // create projectDetails object
+                                    const projectDetails = {
+                                      projectName: project.name,
+                                      description: project.description,
+                                      user: selectedApplicant.name,
+                                      sendersAddress: selectedApplicant.email,
+                                      isVerified: verifiedProjects[project.name]
+
+                                    }
+
+                                   handleVerifyProject(projectDetails)
+                                  }
+                                  }
                               >
                                 {verifiedProjects[project.name] ? "Unverify Project" : "Verify Project"}
                               </Button>

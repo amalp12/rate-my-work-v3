@@ -7,3 +7,12 @@ export interface AuthProps {
     isProfileComplete: boolean;
     setIsProfileComplete: (isProfileComplete: boolean) => void;
 }
+
+// create an interface ProjecDetals with project name, description, user, senders Addess all strings
+export interface ProjectDetails {
+    projectName: string;
+    description: string;
+    user: string;
+    sendersAddress: string;
+    isVerified: boolean;
+}
